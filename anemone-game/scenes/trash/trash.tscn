@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3ex2uqt3fd28"]
+
+[ext_resource type="Texture2D" uid="uid://dkoukjr3l5gjk" path="res://assets/trash_bottle.png" id="1_e4k28"]
+[ext_resource type="Script" uid="uid://6igt488suhtb" path="res://scripts/trash.gd" id="1_ymemc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ymemc"]
+radius = 30.0
+height = 132.05246
+
+[node name="Trash" type="Area2D"]
+script = ExtResource("1_ymemc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_e4k28")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -6)
+rotation = 0.68765974
+shape = SubResource("CapsuleShape2D_ymemc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

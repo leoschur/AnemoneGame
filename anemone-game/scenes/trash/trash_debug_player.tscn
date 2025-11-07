@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://eq3eybt826k8"]
+
+[ext_resource type="Script" uid="uid://rkaq82fst3qb" path="res://scripts/trash_debug_player.gd" id="1_12ru0"]
+[ext_resource type="Texture2D" uid="uid://0hik28w8xd85" path="res://assets/icon.svg" id="2_t0222"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t0222"]
+radius = 80.35
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t0222"]
+size = Vector2(134, 136)
+
+[node name="TrashDebugPlayer" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_12ru0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.234375, 1.234375)
+texture = ExtResource("2_t0222")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_t0222")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(163, 82)
+shape = SubResource("RectangleShape2D_t0222")

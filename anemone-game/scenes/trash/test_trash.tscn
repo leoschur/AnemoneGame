@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3timq7hxcoq8"]
+
+[ext_resource type="PackedScene" uid="uid://b3ex2uqt3fd28" path="res://scenes/trash/trash.tscn" id="1_fybph"]
+[ext_resource type="PackedScene" uid="uid://eq3eybt826k8" path="res://scenes/trash/trash_debug_player.tscn" id="2_w7qux"]
+
+[node name="TestTrash" type="Node2D"]
+
+[node name="Trash" parent="." instance=ExtResource("1_fybph")]
+position = Vector2(507, 323)
+
+[node name="TrashDebugPlayer" parent="." instance=ExtResource("2_w7qux")]
+position = Vector2(221, 236)
+
+[connection signal="area_entered" from="Trash" to="Trash" method="_on_area_entered"]
