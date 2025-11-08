@@ -5,6 +5,7 @@ var mouse_position = Vector2(0, 0)
 
 var trash_collected_scn = preload("res://scenes/trash/trash_collected.tscn")
 var current_trash: Node2D = null
+var amount_of_trash_collected := 0
 
 func _ready() -> void:
 	SignalBus.trash_collected.connect(collect_trash)
@@ -39,6 +40,7 @@ func perform_movement():
 
 func collect_trash():
 	print("TRASH COLLECTED")
+	amount_of_trash_collected = amount_of_trash_collected + 1
 	if current_trash == null:
 		var trash = trash_collected_scn.instantiate()
 		$TrashPositon.add_child(trash)
@@ -46,5 +48,7 @@ func collect_trash():
 
 
 func drop_all_trash():
+	print('dropped ' + str(amount_of_trash_collected) + ' trash')
+	amount_of_trash_collected = 0
 	if current_trash != null:
 		current_trash.queue_free()
