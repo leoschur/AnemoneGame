@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cibqn7p21bya2"]
+
+[ext_resource type="Script" uid="uid://d1blqqxoh8bqv" path="res://scripts/fish.gd" id="1_n6yr6"]
+
+[node name="Fish" type="Node2D" node_paths=PackedStringArray("fish_outline")]
+script = ExtResource("1_n6yr6")
+fish_outline = NodePath("FishOutline")
+
+[node name="FishOutline" type="Line2D" parent="."]
+z_index = 1
+points = PackedVector2Array(472.48682, 211.42273, 459.11026, 146.18597, 403.34732, 112.66159, 345.67087, 126.42136, 305.37387, 159.23909, 282.91833, 202.25114, 272.71643, 247.18037, 347.74622, 245.79115, 354.46594, 219.17278, 370.165, 197.39369, 389.6645, 186.2178, 411.32565, 191.99924, 413.48093, 204.10419, 400.01794, 211.3363)
+width = 2.0
+default_color = Color(1, 0, 0, 1)

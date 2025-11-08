@@ -1,8 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://dxwxc4l3jeg67"]
 
-[ext_resource type="PackedScene" uid="uid://b8kv0npx7hj7a" path="res://scenes/fish_link.tscn" id="1_hddm4"]
+[ext_resource type="PackedScene" uid="uid://cibqn7p21bya2" path="res://scenes/fish.tscn" id="1_hddm4"]
 
 [node name="Playground" type="Node2D"]
 
-[node name="FishLink" parent="." instance=ExtResource("1_hddm4")]
-position = Vector2(472, 267)
+[node name="Fish" parent="." instance=ExtResource("1_hddm4")]
