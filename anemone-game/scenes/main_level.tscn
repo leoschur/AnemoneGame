@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2mv62pchwbh1"]
+[gd_scene load_steps=7 format=3 uid="uid://d2mv62pchwbh1"]
 
+[ext_resource type="PackedScene" uid="uid://tj5ds5rxwv2e" path="res://scenes/ui/DebugHUD.tscn" id="1_6we3w"]
 [ext_resource type="PackedScene" uid="uid://cy3x4gwb6yjx4" path="res://scenes/player/player.tscn" id="1_v3uhd"]
 [ext_resource type="PackedScene" uid="uid://nyxajlm4bhya" path="res://scenes/trash/trash_spawner.tscn" id="2_ufxs0"]
 
@@ -58,3 +59,11 @@ shape = SubResource("RectangleShape2D_6we3w")
 [node name="TrashSpawner" parent="." instance=ExtResource("2_ufxs0")]
 position = Vector2(216, 228)
 spawn_area_rect = Rect2(0, 0, 2322, 1397)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DebugHud" parent="CanvasLayer" instance=ExtResource("1_6we3w")]
+offset_left = 79.0
+offset_top = 51.0
+offset_right = -1521.0
+offset_bottom = -849.0
