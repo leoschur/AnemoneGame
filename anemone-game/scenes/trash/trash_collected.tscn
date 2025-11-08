@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://1ffdnj1b078w"]
 
-[ext_resource type="Texture2D" uid="uid://dkoukjr3l5gjk" path="res://assets/trash_bottle.png" id="1_kupft"]
+[ext_resource type="Texture2D" uid="uid://dkoukjr3l5gjk" path="res://assets/trash/trash_bottle.png" id="1_kupft"]
 
 [node name="TrashCollected" type="Node2D"]
 

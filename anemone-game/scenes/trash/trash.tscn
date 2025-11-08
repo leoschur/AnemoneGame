@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b3ex2uqt3fd28"]
 
-[ext_resource type="Texture2D" uid="uid://dkoukjr3l5gjk" path="res://assets/trash_bottle.png" id="1_e4k28"]
+[ext_resource type="Texture2D" uid="uid://dkoukjr3l5gjk" path="res://assets/trash/trash_bottle.png" id="1_e4k28"]
 [ext_resource type="Script" uid="uid://6igt488suhtb" path="res://scripts/trash/trash.gd" id="1_ymemc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ymemc"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://beb3yvk4or5nw"]
+
+[ext_resource type="Script" uid="uid://dlbyejyy6m3pj" path="res://scripts/trash/trash_drop_zone.gd" id="1_kpe8h"]
+[ext_resource type="Texture2D" uid="uid://b11b3yscakynw" path="res://assets/trash/trash_drop_zone.png" id="1_qn81e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kpe8h"]
+radius = 32.14
+
+[node name="TrashDropZone" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_kpe8h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qn81e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kpe8h")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

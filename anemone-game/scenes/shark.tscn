@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://badvssrgels4l"]
 
 [ext_resource type="Script" uid="uid://c8c3a61y6ls8d" path="res://shark.gd" id="1_8l5qy"]
-[ext_resource type="Texture2D" uid="uid://dkoukjr3l5gjk" path="res://assets/trash_bottle.png" id="2_v5iaq"]
+[ext_resource type="Texture2D" uid="uid://dkoukjr3l5gjk" path="res://assets/trash/trash_bottle.png" id="2_v5iaq"]
 
 [node name="Shark" type="Node2D"]
 script = ExtResource("1_8l5qy")

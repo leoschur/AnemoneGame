@@ -4,6 +4,11 @@ extends CharacterBody2D
 var mouse_position = Vector2(0, 0)
 
 var trash_collected_scn = preload("res://scenes/trash/trash_collected.tscn")
+var current_trash: Node2D = null
+
+func _ready() -> void:
+	GameStateManager.trash_dropped.connect(drop_all_trash)
+
 
 func _physics_process(_delta):
 	perform_movement()
@@ -33,9 +38,12 @@ func perform_movement():
 
 func collect_trash():
 	print("TRASH COLLECTED")
-	var trash = trash_collected_scn.instantiate()
-	$TrashPositon.add_child(trash)
+	if current_trash == null:
+		var trash = trash_collected_scn.instantiate()
+		$TrashPositon.add_child(trash)
+		current_trash = trash
 
 
 func drop_all_trash():
-	pass
+	if current_trash != null:
+		current_trash.queue_free()

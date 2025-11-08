@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3timq7hxcoq8"]
+[gd_scene load_steps=4 format=3 uid="uid://c3timq7hxcoq8"]
 
 [ext_resource type="PackedScene" uid="uid://b3ex2uqt3fd28" path="res://scenes/trash/trash.tscn" id="1_fybph"]
 [ext_resource type="PackedScene" uid="uid://eq3eybt826k8" path="res://scenes/trash/trash_debug_player.tscn" id="2_w7qux"]
+[ext_resource type="PackedScene" uid="uid://beb3yvk4or5nw" path="res://scenes/trash/trash_drop_zone.tscn" id="3_84ton"]
 
 [node name="TestTrash" type="Node2D"]
 
@@ -10,5 +11,8 @@ position = Vector2(507, 323)
 
 [node name="TrashDebugPlayer" parent="." instance=ExtResource("2_w7qux")]
 position = Vector2(221, 236)
+
+[node name="TrashDropZone" parent="." instance=ExtResource("3_84ton")]
+position = Vector2(1223, 654)
 
 [connection signal="area_entered" from="Trash" to="Trash" method="_on_area_entered"]
