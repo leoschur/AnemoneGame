@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://b02ww5pfceilc"]
+
+[ext_resource type="PackedScene" uid="uid://eq3eybt826k8" path="res://scenes/trash/trash_debug_player.tscn" id="1_6ib5t"]
+[ext_resource type="PackedScene" uid="uid://b3ex2uqt3fd28" path="res://scenes/trash/trash.tscn" id="2_5aehe"]
+[ext_resource type="PackedScene" uid="uid://beb3yvk4or5nw" path="res://scenes/trash/trash_drop_zone.tscn" id="3_maxne"]
+[ext_resource type="PackedScene" uid="uid://dywgbsc4c21o" path="res://scenes/anemone/anemone.tscn" id="4_ivbub"]
+[ext_resource type="PackedScene" uid="uid://tj5ds5rxwv2e" path="res://scenes/ui/DebugHUD.tscn" id="5_5aehe"]
+
+[node name="AubarisTest" type="Node2D"]
+
+[node name="TrashDebugPlayer" parent="." instance=ExtResource("1_6ib5t")]
+
+[node name="Trash" parent="." instance=ExtResource("2_5aehe")]
+position = Vector2(223, 633)
+
+[node name="Trash2" parent="." instance=ExtResource("2_5aehe")]
+position = Vector2(421, 282)
+
+[node name="Trash3" parent="." instance=ExtResource("2_5aehe")]
+position = Vector2(625, 545)
+
+[node name="TrashDropZone" parent="." instance=ExtResource("3_maxne")]
+position = Vector2(1153, 167)
+
+[node name="Anemone" parent="." instance=ExtResource("4_ivbub")]
+position = Vector2(983, 677)
+
+[node name="Anemone2" parent="." instance=ExtResource("4_ivbub")]
+position = Vector2(1439, 143)
+
+[node name="Anemone3" parent="." instance=ExtResource("4_ivbub")]
+position = Vector2(1150, 631)
+
+[node name="DebugHud" parent="." instance=ExtResource("5_5aehe")]
