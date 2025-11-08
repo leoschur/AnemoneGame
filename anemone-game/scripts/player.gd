@@ -24,7 +24,7 @@ func _physics_process(_delta):
 
 func perform_movement(delta):
 	mouse_position = get_global_mouse_position()
-	print(mouse_position)
+	#print(mouse_position)
 	var target = (mouse_position - global_position).normalized()
 	
 	if global_position.distance_to(mouse_position) > 1:
@@ -49,7 +49,7 @@ func collect_trash():
 	amount_of_trash_collected = amount_of_trash_collected + 1
 	if current_trash == null:
 		var trash = trash_collected_scn.instantiate()
-		$TrashPositon.add_child(trash)
+		$TrashPosition.add_child(trash)
 		current_trash = trash
 
 
