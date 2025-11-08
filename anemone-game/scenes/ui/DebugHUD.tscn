@@ -28,7 +28,6 @@ text = "TrashCollectedLabel"
 layout_mode = 2
 text = "SafeFromSharkLabel"
 
-[node name="MicroPlasticMeter" type="Label" parent="VBoxContainer"]
-visible = false
+[node name="MicroplasticsPollutionLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "MicroPlasticMeter"

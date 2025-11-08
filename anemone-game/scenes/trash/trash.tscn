@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3ex2uqt3fd28"]
+[gd_scene load_steps=6 format=3 uid="uid://b3ex2uqt3fd28"]
 
 [ext_resource type="Texture2D" uid="uid://dkoukjr3l5gjk" path="res://assets/trash/trash_bottle.png" id="1_e4k28"]
 [ext_resource type="Script" uid="uid://6igt488suhtb" path="res://scripts/trash/trash.gd" id="1_ymemc"]
@@ -7,9 +7,18 @@
 radius = 30.0
 height = 132.05246
 
+[sub_resource type="Gradient" id="Gradient_ymemc"]
+colors = PackedColorArray(0.786172, 3.1525642e-06, 5.7756904e-07, 1, 0.33949992, 0.97, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xxdwj"]
+gradient = SubResource("Gradient_ymemc")
+width = 200
+height = 16
+
 [node name="Trash" type="Area2D"]
 collision_layer = 2
 script = ExtResource("1_ymemc")
+lifetime_on_spawn = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_e4k28")
@@ -18,5 +27,20 @@ texture = ExtResource("1_e4k28")
 position = Vector2(3, -6)
 rotation = 0.68765974
 shape = SubResource("CapsuleShape2D_ymemc")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -150.0
+offset_right = 100.0
+offset_bottom = -134.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+texture_progress = SubResource("GradientTexture2D_xxdwj")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
