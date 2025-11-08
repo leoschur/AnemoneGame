@@ -2,4 +2,4 @@ extends Area2D
 
 
 func _on_body_entered(_body: Node2D) -> void:
-	GameStateManager.trash_dropped.emit()
+	SignalBus.trash_dropped.emit()

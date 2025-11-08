@@ -7,7 +7,8 @@ var trash_collected_scn = preload("res://scenes/trash/trash_collected.tscn")
 var current_trash: Node2D = null
 
 func _ready() -> void:
-	GameStateManager.trash_dropped.connect(drop_all_trash)
+	SignalBus.trash_collected.connect(collect_trash)
+	SignalBus.trash_dropped.connect(drop_all_trash)
 
 
 func _physics_process(_delta):
