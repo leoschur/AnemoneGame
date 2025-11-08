@@ -12,7 +12,8 @@ const FISH_LINK_RADIUS: float = 20.0
 @export var fish_outline: Line2D
 
 var _fish_links: Array[FishLink]
-
+var is_close: bool = false
+var last_dir: Vector2 = Vector2.ZERO
 
 func _ready():
 	generate_fish()
@@ -45,6 +46,7 @@ func generate_fish():
 		var link = _fish_links[link_index]
 		if not link.is_head:
 			link.next = _fish_links[link_index + 1]
+			link.next.prev = link
 	draw_outline()
 
 
@@ -56,12 +58,35 @@ func _process(delta):
 	var headPos = head.global_position
 	var headDir = (targetPos - headPos).normalized()
 	
-	# TODO: Add turning constraint
+	if is_close:
+		targetPos = headPos + last_dir * 200.0
+		headDir = (targetPos - headPos).normalized()
+		print("dist: ", (get_viewport().get_mouse_position() - headPos).length())
+		if (get_viewport().get_mouse_position() - headPos).length() >= 100.0:
+			is_close = false
+	elif (targetPos - headPos).length() < 10.0:
+		targetPos = headPos + headDir * 200.0
+		headDir = (targetPos - headPos).normalized()
+		is_close = true
+		last_dir = headDir
+	
+	
+	#var link_1: FishLink = _fish_links[_fish_links.size() - 1]
+	#var link_2: FishLink = _fish_links[_fish_links.size() - 2]
+	#var link_3: FishLink = _fish_links[_fish_links.size() - 3]
+	#var spine_1: Vector2 = (link_2.global_position - link_1.global_position).normalized()
+	#var spine_2: Vector2 = (link_3.global_position - link_2.global_position).normalized()
+	#var angle_between_spines: float = spine_1.angle_to(spine_2)
+	#var abs_angle = rad_to_deg(angle_between_spines)
+	#if abs_angle > 90.0:
+		#pass#headDir = spine_1.rotated(deg_to_rad(90.0))
+	#if abs_angle < -90.0:
+		#pass#headDir = spine_1.rotated(deg_to_rad(-90.0))
 	
 	headPos += headDir * delta * 400.0
-	if (targetPos - headPos).length() > 5.0:
-		head.update_head(headPos, headDir)
-		tail.update_tail()
+	head.update_head(headPos, headDir)
+	tail.update_tail()
+
 	
 	draw_outline()
 

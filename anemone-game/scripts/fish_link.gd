@@ -22,6 +22,7 @@ var is_tail: bool = false
 var tail_points = []
 
 # Body data
+var prev: FishLink = null
 var next: FishLink = null
 
 
@@ -35,6 +36,15 @@ func _process(delta):
 		var new_pos = self.position
 		var new_dir = (next.position - self.position).normalized()
 		var next_distance = abs(next.position - self.position).length()
+		
+		#if prev and next:
+			#var spine_1: Vector2 = (self.global_position - next.global_position).normalized()
+			#var spine_2: Vector2 = (prev.global_position - self.global_position).normalized()
+			#var angle_between_spines: float = spine_1.angle_to(spine_2)
+			#var abs_angle = rad_to_deg(abs(angle_between_spines))
+			#if abs_angle > 30.0:
+				#new_dir = new_dir.rotated(deg_to_rad(30.0))
+		
 		if next_distance > 20.0:
 			new_pos += new_dir * 400.0 * delta
 		update_link(new_pos, new_dir)

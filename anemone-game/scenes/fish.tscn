@@ -9,32 +9,52 @@ script = ExtResource("1_n6yr6")
 fish_outline = NodePath("FishOutline")
 
 [node name="FishOutline" type="Line2D" parent="."]
-points = PackedVector2Array(91.86527, -25.577864, 97.67033, -27.089705, 107.84939, -62.497684, 88.7328, -59.189106, 82.761475, -57.318817, 77.66035, -53.694824, 73.928764, -48.671867, 71.932, -42.74163, 71.86551, -36.484604, 73.735794, -30.513271, 77.35979, -25.412148, 82.382744, -21.680565, 88.31298, -19.6838, 94.57001, -19.617306, 114.65862, -23.081516, 114.77053, -63.25022, 93.0248, -65.56105, 74.62516, -66.30332, 68.81381, -63.983185, 64.00385, -59.9808, 60.66612, -54.687946, 59.127323, -48.622726, 59.5381, -42.378845, 61.85824, -36.567497, 65.86063, -31.757538, 71.15348, -28.419804)
+points = PackedVector2Array(231.91035, -130.86548, 213.57101, -120.62855, 191.72774, -108.425156, 169.37321, -95.932816, 164.45569, -92.063354, 160.97458, -86.86368, 159.27065, -80.84276, 159.51067, -74.58999, 161.67114, -68.717415, 165.54062, -63.799896, 170.7403, -60.318787, 176.7612, -58.614845, 183.01398, -58.854862, 188.88655, -61.015347, 211.24059, -73.5074, 233.07774, -85.70739, 251.39781, -95.93355, 275.67194, -110.54303, 279.16965, -115.73155, 280.89282, -121.74699, 280.6728, -128.00049, 278.5311, -133.87994, 274.67737, -138.80981, 269.48886, -142.30753, 263.47342, -144.03072, 257.2199, -143.81068)
 closed = true
 width = 2.0
 default_color = Color(1, 0, 0, 1)
 
-[node name="FishLink" type="Node2D" parent="." instance=ExtResource("2_nub35")]
-position = Vector2(79.04387, -46.797554)
+[node name="FishLink" parent="." instance=ExtResource("2_nub35")]
+position = Vector2(88.29167, -58.041466)
+radius = 20.0
+
+[node name="@Node2D@24210" parent="." instance=ExtResource("2_nub35")]
+position = Vector2(78.35843, -71.16638)
+radius = 20.0
+
+[node name="@Node2D@24211" parent="." instance=ExtResource("2_nub35")]
+position = Vector2(61.250877, -81.3305)
+radius = 20.0
+
+[node name="@Node2D@24212" parent="." instance=ExtResource("2_nub35")]
+position = Vector2(43.175846, -86.61597)
+radius = 20.0
+
+[node name="@Node2D@24213" parent="." instance=ExtResource("2_nub35")]
+position = Vector2(26.549084, -88.88379)
+radius = 20.0
+
+[node name="@Node2D@22555" type="Node2D" parent="." instance=ExtResource("2_nub35")]
+position = Vector2(254.72914, -120.669495)
 script = ExtResource("3_pgks6")
 radius = 20.0
 
-[node name="@Node2D@24210" type="Node2D" parent="." instance=ExtResource("2_nub35")]
-position = Vector2(92.44504, -45.569458)
+[node name="@Node2D@22556" type="Node2D" parent="." instance=ExtResource("2_nub35")]
+position = Vector2(235.34781, -109.87938)
 script = ExtResource("3_pgks6")
 radius = 20.0
 
-[node name="@Node2D@24211" type="Node2D" parent="." instance=ExtResource("2_nub35")]
-position = Vector2(106.22043, -45.169964)
+[node name="@Node2D@22557" type="Node2D" parent="." instance=ExtResource("2_nub35")]
+position = Vector2(217.0194, -99.6455)
 script = ExtResource("3_pgks6")
 radius = 20.0
 
-[node name="@Node2D@24212" type="Node2D" parent="." instance=ExtResource("2_nub35")]
-position = Vector2(111.254005, -42.7896)
+[node name="@Node2D@22558" type="Node2D" parent="." instance=ExtResource("2_nub35")]
+position = Vector2(195.17958, -87.4431)
 script = ExtResource("3_pgks6")
 radius = 20.0
 
-[node name="@Node2D@24213" type="Node2D" parent="." instance=ExtResource("2_nub35")]
-position = Vector2(91.651405, -39.403206)
+[node name="@Node2D@22559" type="Node2D" parent="." instance=ExtResource("2_nub35")]
+position = Vector2(179.12988, -78.47408)
 script = ExtResource("3_pgks6")
 radius = 20.0
