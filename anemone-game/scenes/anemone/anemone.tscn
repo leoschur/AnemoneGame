@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dywgbsc4c21o"]
+
+[ext_resource type="Script" uid="uid://coxqmidnihesw" path="res://scripts/anemone/anemone.gd" id="1_65o3d"]
+[ext_resource type="Texture2D" uid="uid://booj8ip6bbh70" path="res://assets/anemone.png" id="1_ceh15"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_65o3d"]
+radius = 131.77
+
+[node name="Anemone" type="Area2D"]
+collision_layer = 8
+script = ExtResource("1_65o3d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ceh15")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_65o3d")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

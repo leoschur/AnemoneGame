@@ -2,6 +2,8 @@ extends Node
 
 signal trash_collected()
 signal trash_dropped()
+signal anemome_entered()
+signal anemone_exited()
 
 
 func _ready() -> void:
