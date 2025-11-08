@@ -13,7 +13,7 @@ var neighbors := []
 var neighborsDistances := []
 var timeOutOfBorders := 0.0
 
-func _ready():	
+func _ready():
 	velocity = Vector2(randf_range(-maxVelocity, maxVelocity),
 						randf_range(-maxVelocity, maxVelocity))
 

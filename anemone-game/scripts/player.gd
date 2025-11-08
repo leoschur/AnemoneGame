@@ -2,12 +2,16 @@ extends CharacterBody2D
 
 class_name Player
 
-@export var speed = 300
+@export var acceleration: float = 4000
+@export var minSpeed: float = 150
+@export var maxSpeed: float = 300
+@export var rotation_speed := 2.0
 var mouse_position = Vector2(0, 0)
 
 var trash_collected_scn = preload("res://scenes/trash/trash_collected.tscn")
 var current_trash: Node2D = null
 var amount_of_trash_collected := 0
+
 
 func _ready() -> void:
 	SignalBus.trash_collected.connect(collect_trash)
@@ -15,28 +19,27 @@ func _ready() -> void:
 
 
 func _physics_process(_delta):
-	perform_movement()
+	perform_movement(_delta)
 
 
-func perform_movement():
-	# Get the mouse position
-	#if Input.is_action_pressed("click"):
-	mouse_position = get_global_mouse_position()
+func perform_movement(delta):
+	mouse_position = get_viewport().get_mouse_position()
+	var target = (mouse_position - global_position).normalized()
+	
+	if global_position.distance_to(mouse_position) > 1:
 
-	# Calculate the direction vector
-	var direction = (mouse_position - global_position).normalized()
-
-	# Set the velocity
-	if direction: # Only move if there's a direction to move in
-		velocity = direction * speed
-	else:
-		velocity = Vector2(0, 0) # Stop if the player is already at the mouse position
-
+		velocity += target * acceleration * delta
+		var speed = velocity.length()
+		speed = clamp(speed, minSpeed, maxSpeed)
+		velocity = velocity.normalized() * speed
+	
 	# Move the player
 	move_and_slide()
-
-	# Rotate the player to face the mouse
-	# This will point the player's forward direction towards the mouse
+	
+	var desired_angle = target.angle()
+	var angle_diff = wrapf(desired_angle - rotation, -PI, PI)
+	var max_step = rotation_speed * delta
+	rotation += clamp(angle_diff, -max_step, max_step)
 	look_at(mouse_position)
 
 
