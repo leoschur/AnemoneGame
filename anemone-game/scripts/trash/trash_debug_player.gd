@@ -2,9 +2,13 @@ extends CharacterBody2D
 
 @export var speed = 300
 var mouse_position = Vector2(0, 0)
-	
+
 
 func _physics_process(_delta):
+	perform_movement()
+
+
+func perform_movement():
 	# Get the mouse position
 	#if Input.is_action_pressed("click"):
 	mouse_position = get_global_mouse_position()
@@ -24,3 +28,7 @@ func _physics_process(_delta):
 	# Rotate the player to face the mouse
 	# This will point the player's forward direction towards the mouse
 	look_at(mouse_position)
+
+
+func collect_trash():
+	print("TRASH COLLECTED")

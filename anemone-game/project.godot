@@ -14,3 +14,12 @@ config/name="AnemoneGame"
 run/main_scene="uid://dxwxc4l3jeg67"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://assets/icon.svg"
+
+[autoload]
+
+GameStateManager="*res://scripts/game_state/game_state_manager.gd"
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Trash"
