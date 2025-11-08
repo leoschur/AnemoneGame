@@ -25,3 +25,4 @@ limit_right = 1900
 limit_bottom = 1200
 
 [node name="TrashPosition" type="Node2D" parent="."]
+position = Vector2(-154, 13)
