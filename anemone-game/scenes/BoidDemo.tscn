@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgqu2toiqgekp"]
+
+[ext_resource type="PackedScene" uid="uid://d2uuhl127kkgq" path="res://scenes/Flock.tscn" id="1_8o88j"]
+[ext_resource type="PackedScene" uid="uid://ceq03o3kh2yd5" path="res://scenes/Boid.tscn" id="2_3utj5"]
+[ext_resource type="PackedScene" uid="uid://badvssrgels4l" path="res://scenes/shark.tscn" id="3_lhv63"]
+
+[node name="BoidDemo" type="Node"]
+
+[node name="Flock" parent="." instance=ExtResource("1_8o88j")]
+boidScene = ExtResource("2_3utj5")
+predator = NodePath("../Shark")
+
+[node name="Shark" parent="." instance=ExtResource("3_lhv63")]
