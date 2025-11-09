@@ -109,6 +109,12 @@ func place(new_position: Vector2, direction: Vector2 = Vector2.ZERO):
 		i += 1
 
 
+func get_links() -> Array[Node]:
+	var body = link_container.get_children()
+	body.reverse()
+	return body
+
+
 func _add_link():
 	var new_link: Link = LINK.instantiate()
 	new_link.update.connect(redraw)

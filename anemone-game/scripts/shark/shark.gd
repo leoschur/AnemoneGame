@@ -18,7 +18,8 @@ func _process(_delta):
 	if not target.is_hidden:
 		if not next_position_timer.is_stopped():
 			next_position_timer.stop()
-		fish.target_position = target.global_position # FIXME target.global_position IS ZERO ALLWAYS
+		# FIXME maybe
+		fish.target_position = target.fish.get_links().front().global_position
 	elif next_position_timer.is_stopped():
 		_target_random_point_on_map()
 		next_position_timer.wait_time = 0
