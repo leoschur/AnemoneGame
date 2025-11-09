@@ -1,12 +1,14 @@
 @tool
 class_name Fish
-extends Node2D
+extends StaticBody2D
 
 
 const LINK = preload("uid://bbhu0e3rkslb7")
 
 @export_category("Components")
 @export var link_container: Node2D
+@export var collision_polygon_2d: CollisionPolygon2D
+@export var polygon_2d: Polygon2D
 @export var line_2d: Line2D
 
 @export_category("Editor Functions")
@@ -180,6 +182,8 @@ func _visualize_curve(curve: Curve2D):
 	var length = curve.get_baked_length()
 	for i in range(resolution + 1):
 		smooth_points.append(curve.sample_baked(float(i) / resolution * length) * global_transform)
+	collision_polygon_2d.polygon = smooth_points
+	polygon_2d.polygon = smooth_points
 	line_2d.points = smooth_points
 
 
