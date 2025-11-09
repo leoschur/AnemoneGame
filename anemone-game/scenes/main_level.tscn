@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2mv62pchwbh1"]
+[gd_scene load_steps=11 format=3 uid="uid://d2mv62pchwbh1"]
 
 [ext_resource type="PackedScene" uid="uid://tj5ds5rxwv2e" path="res://scenes/ui/DebugHUD.tscn" id="1_6we3w"]
 [ext_resource type="PackedScene" uid="uid://cy3x4gwb6yjx4" path="res://scenes/player/player.tscn" id="1_v3uhd"]
 [ext_resource type="PackedScene" uid="uid://nyxajlm4bhya" path="res://scenes/trash/trash_spawner.tscn" id="2_ufxs0"]
+[ext_resource type="Script" uid="uid://oelyqo3rf5e" path="res://scripts/shark/shark_manager.gd" id="4_qmak7"]
 
 [sub_resource type="Gradient" id="Gradient_6we3w"]
 offsets = PackedFloat32Array(1)
@@ -22,6 +23,12 @@ size = Vector2(2822, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6we3w"]
 size = Vector2(1983.5, 47.000244)
 
+[sub_resource type="Curve2D" id="Curve2D_qmak7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -198, -189, 0, 0, 0, 0, 3087, -183, 0, 0, 0, 0, 3080, 2067, 0, 0, 0, 0, -186, 2048)
+}
+point_count = 4
+
 [node name="MainLevel" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -30,7 +37,6 @@ texture = SubResource("GradientTexture2D_qmak7")
 
 [node name="Player" parent="." instance=ExtResource("1_v3uhd")]
 position = Vector2(1037, 769)
-collision_mask = 17
 
 [node name="Borders" type="Node2D" parent="."]
 
@@ -80,3 +86,23 @@ offset_left = 79.0
 offset_top = 51.0
 offset_right = -1521.0
 offset_bottom = -849.0
+
+[node name="SharkManager" type="Node2D" parent="." node_paths=PackedStringArray("outside_path", "peace_timer", "hunt_timer")]
+script = ExtResource("4_qmak7")
+outside_path = NodePath("OutsidePath")
+peace_timer = NodePath("PeaceTimer")
+hunt_timer = NodePath("HuntTimer")
+
+[node name="PeaceTimer" type="Timer" parent="SharkManager"]
+wait_time = 20.0
+one_shot = true
+
+[node name="HuntTimer" type="Timer" parent="SharkManager"]
+wait_time = 10.0
+one_shot = true
+
+[node name="OutsidePath" type="Path2D" parent="SharkManager"]
+curve = SubResource("Curve2D_qmak7")
+
+[connection signal="timeout" from="SharkManager/PeaceTimer" to="SharkManager" method="_on_peace_timer_timeout"]
+[connection signal="timeout" from="SharkManager/HuntTimer" to="SharkManager" method="_on_hunt_timer_timeout"]
