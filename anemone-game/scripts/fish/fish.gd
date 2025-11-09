@@ -1,6 +1,6 @@
 @tool
 class_name Fish
-extends StaticBody2D
+extends CharacterBody2D
 
 
 const LINK = preload("uid://bbhu0e3rkslb7")
@@ -42,7 +42,7 @@ var remote_transform_2d: RemoteTransform2D
 
 # Movement variables
 var target_position: Vector2 = Vector2.ZERO
-var velocity: Vector2 = Vector2.RIGHT * speed
+var fish_velocity: Vector2 = Vector2.RIGHT * speed
 
 
 # Called when the node enters the scene tree for the first time.
@@ -69,19 +69,19 @@ func _physics_process(delta: float) -> void:
 	# Smooth steering with limited angular speed
 	var to_target = target_position - head.global_position
 	if to_target.length_squared() < 0.0001:
-		head.global_position += velocity * delta
+		head.global_position += fish_velocity * delta
 		return
 	
 	var desired_angle = to_target.angle()
-	var current_angle = velocity.angle()
+	var current_angle = fish_velocity.angle()
 	var angle_diff = wrapf(desired_angle - current_angle, -PI, PI)
 	var max_turn = deg_to_rad(max_turn_deg_per_sec) * delta
 	var clamped_turn = clamp(angle_diff, -max_turn, max_turn)
 	var new_angle = current_angle + clamped_turn
 	
-	velocity = Vector2.RIGHT.rotated(new_angle) * speed
-	head.look_at(head.global_position + velocity)
-	head.global_position += velocity * delta
+	fish_velocity = Vector2.RIGHT.rotated(new_angle) * speed
+	head.look_at(head.global_position + fish_velocity)
+	head.global_position += fish_velocity * delta
 	
 	var body: Array[Node] = link_container.get_children()
 	body.reverse()
@@ -198,7 +198,7 @@ func _visualize_curve(curve: Curve2D):
 		return
 	# Smooth the curve with more points
 	var smooth_points: Array[Vector2]
-	var resolution = 256  # higher -> smoother
+	var resolution = 16  # higher -> smoother
 	var length = curve.get_baked_length()
 	for i in range(resolution + 1):
 		smooth_points.append(curve.sample_baked(float(i) / resolution * length) * global_transform)

@@ -2,32 +2,22 @@
 
 [ext_resource type="Script" uid="uid://6igt488suhtb" path="res://scripts/trash/trash.gd" id="1_ymemc"]
 [ext_resource type="Texture2D" uid="uid://ca8l20jvrjyss" path="res://assets/trash_bottle_blue.png" id="2_ymemc"]
+[ext_resource type="Texture2D" uid="uid://cyktpyybst8xs" path="res://assets/trash/progress_bar.png" id="3_xxdwj"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ymemc"]
-radius = 15.0
-height = 107.51
+[sub_resource type="CircleShape2D" id="CircleShape2D_xxdwj"]
+radius = 120.0
 
-[sub_resource type="Gradient" id="Gradient_ymemc"]
-colors = PackedColorArray(0.786172, 3.1525642e-06, 5.7756904e-07, 1, 0.33949992, 0.97, 0, 1)
+[sub_resource type="Curve" id="Curve_xxdwj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_xxdwj"]
-gradient = SubResource("Gradient_ymemc")
-width = 200
-height = 16
-
-[node name="Trash" type="Area2D"]
+[node name="Trash" type="Area2D" node_paths=PackedStringArray("sprite_2d", "texture_progress_bar", "particles")]
 collision_layer = 2
 script = ExtResource("1_ymemc")
+sprite_2d = NodePath("Sprite2D")
+texture_progress_bar = NodePath("TextureProgressBar")
+particles = NodePath("CPUParticles2D")
 lifetime_on_spawn = 5.0
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_ymemc")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 1)
-rotation = 0.16929694
-shape = SubResource("CapsuleShape2D_ymemc")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 anchors_preset = 8
@@ -35,13 +25,40 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -150.0
-offset_right = 100.0
-offset_bottom = -134.0
+offset_left = -125.5
+offset_top = -125.5
+offset_right = 125.5
+offset_bottom = 125.5
 grow_horizontal = 2
 grow_vertical = 2
+step = 0.01
 value = 100.0
-texture_progress = SubResource("GradientTexture2D_xxdwj")
+fill_mode = 4
+texture_progress = ExtResource("3_xxdwj")
+tint_progress = Color(0, 0.69411767, 0.83137256, 0.21568628)
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ymemc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 1)
+rotation = 0.16929694
+shape = SubResource("CircleShape2D_xxdwj")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 1024
+lifetime = 10.0
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 20.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 200.0
+scale_amount_min = 0.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_xxdwj")
+color = Color(0.39993572, 0.3999357, 0.39993563, 1)

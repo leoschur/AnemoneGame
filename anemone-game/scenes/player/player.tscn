@@ -1,21 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://cy3x4gwb6yjx4"]
+[gd_scene load_steps=4 format=3 uid="uid://cy3x4gwb6yjx4"]
 
 [ext_resource type="Script" uid="uid://dh3p83kqlqdgn" path="res://scripts/player/player.gd" id="1_8afob"]
 [ext_resource type="PackedScene" uid="uid://bq0yvub2l8hq6" path="res://scenes/fish/fish.tscn" id="3_gmlin"]
+[ext_resource type="Texture2D" uid="uid://0hik28w8xd85" path="res://assets/icon.svg" id="3_lvxji"]
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("fish")]
+[node name="Player" type="Node2D" node_paths=PackedStringArray("fish", "trash_stack")]
 script = ExtResource("1_8afob")
 fish = NodePath("Fish")
+trash_stack = NodePath("TrashStack")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(550, 0)
+zoom = Vector2(0.5, 0.5)
 limit_left = -250
 limit_top = -100
 limit_right = 1900
 limit_bottom = 1200
 
 [node name="Fish" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_gmlin")]
+link_distance = 50.0
 camera = NodePath("../Camera2D")
 
 [node name="TrashStack" type="Node2D" parent="."]
-position = Vector2(-154, 13)
+position = Vector2(-80, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="TrashStack"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_lvxji")

@@ -25,7 +25,7 @@ func spawn_trash():
 	var rand_x = rng.randf_range(spawn_area_rect.position.x, spawn_area_rect.position.x + spawn_area_rect.size.x)
 	var rand_y = rng.randf_range(spawn_area_rect.position.y, spawn_area_rect.position.y + spawn_area_rect.size.y)
 	var spawn_position = Vector2(rand_x, rand_y)
-	print(str(rand_x) + ' ' + str(rand_y))
+	#print(str(rand_x) + ' ' + str(rand_y))
 	
 	var instance = trash_scene.instantiate()
 	instance.position = spawn_position

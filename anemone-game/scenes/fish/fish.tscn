@@ -3,14 +3,12 @@
 [ext_resource type="Script" uid="uid://crba1oyr1ewi7" path="res://scripts/fish/fish.gd" id="1_xu20i"]
 [ext_resource type="PackedScene" uid="uid://bbhu0e3rkslb7" path="res://scenes/fish/link.tscn" id="2_nub35"]
 
-[node name="Fish" type="StaticBody2D" node_paths=PackedStringArray("link_container", "collision_polygon_2d", "polygon_2d", "line_2d")]
+[node name="Fish" type="CharacterBody2D" node_paths=PackedStringArray("link_container", "collision_polygon_2d", "polygon_2d", "line_2d")]
 script = ExtResource("1_xu20i")
 link_container = NodePath("LinkContainer")
 collision_polygon_2d = NodePath("CollisionPolygon2D")
 polygon_2d = NodePath("Polygon2D")
 line_2d = NodePath("Line2D")
-link_distance = 50.0
-roundness_factor = 0.1
 
 [node name="LinkContainer" type="Node2D" parent="."]
 

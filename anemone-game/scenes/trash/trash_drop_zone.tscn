@@ -1,19 +1,34 @@
-[gd_scene load_steps=4 format=3 uid="uid://beb3yvk4or5nw"]
+[gd_scene load_steps=5 format=3 uid="uid://beb3yvk4or5nw"]
 
 [ext_resource type="Script" uid="uid://dlbyejyy6m3pj" path="res://scripts/trash/trash_drop_zone.gd" id="1_kpe8h"]
-[ext_resource type="Texture2D" uid="uid://b11b3yscakynw" path="res://assets/trash/trash_drop_zone.png" id="1_qn81e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kpe8h"]
-radius = 32.14
+radius = 100.0
+
+[sub_resource type="Curve" id="Curve_qn81e"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_kpe8h"]
+colors = PackedColorArray(0, 0, 1, 1, 0, 1, 1, 1)
 
 [node name="TrashDropZone" type="Area2D"]
 collision_layer = 4
 script = ExtResource("1_kpe8h")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_qn81e")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_kpe8h")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 1024
+emission_shape = 1
+emission_sphere_radius = 100.0
+gravity = Vector2(0, 0)
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.4
+scale_amount_min = 0.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_qn81e")
+color_ramp = SubResource("Gradient_kpe8h")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
